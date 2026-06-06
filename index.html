@@ -42,9 +42,10 @@ nav{display:flex;align-items:center;flex:1;justify-content:center;gap:2px}
 .lbtn{background:none;border:none;color:var(--txt3);font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:0.8px;font-weight:500;padding:5px 9px;cursor:pointer;transition:all .15s}
 .lbtn.on{background:var(--gold);color:#0D0B08}
 .lbtn:hover:not(.on){color:var(--txt2)}
-.burger{display:none;background:none;border:1px solid var(--brd);color:var(--txt2);padding:6px 9px;cursor:pointer;font-size:18px;line-height:1}
-.theme-btn{background:var(--bg3);border:1px solid var(--brd);color:var(--txt);width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:17px;flex-shrink:0;border-radius:var(--radius)}
-.theme-btn:hover{border-color:var(--gold);color:var(--gold);background:rgba(201,151,74,0.08)}
+.burger{display:none;background:var(--bg3);border:1.5px solid var(--gold3);color:var(--txt);padding:6px 10px;cursor:pointer;font-size:18px;line-height:1;border-radius:var(--radius)}
+.burger:hover{border-color:var(--gold);color:var(--gold)}
+.theme-btn{background:var(--bg3);border:1.5px solid var(--gold3);color:var(--txt);width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:17px;flex-shrink:0;border-radius:var(--radius)}
+.theme-btn:hover{border-color:var(--gold);color:var(--gold);background:rgba(201,151,74,0.12)}
 .mob-nav{display:none;flex-direction:column;background:var(--bg2);border-bottom:1px solid var(--brd2);padding:0.5rem 0;position:sticky;top:60px;z-index:199}
 .mob-nav.open{display:flex}
 .mob-nav-item{background:none;border:none;color:var(--txt2);font-family:'DM Sans',sans-serif;font-size:14px;padding:13px var(--pad);text-align:left;cursor:pointer;transition:color .15s;border-bottom:1px solid var(--brd2)}
@@ -397,14 +398,14 @@ footer{background:var(--bg2);border-top:1px solid var(--brd2)}
       </div>
       <div class="ci">
         <div class="ci-ico"><i class="ti ti-clock"></i></div>
-        <div><div class="ci-lbl" id="cl-work">Режим работы</div><div class="ci-val" id="cl-hours">Пн–Сб: 9:00 – 18:00</div></div>
+        <div><div class="ci-lbl" id="cl-work">Режим работы</div><div class="ci-val" id="cl-hours">Пн–Сб: 9:00 – 20:00</div></div>
       </div>
       <div style="display:flex;gap:8px;margin-top:0.5rem;flex-wrap:wrap">
         <a href="https://yandex.uz/maps/?text=Ташкент+Мирзо-Улугбекский+Дархон+проезд+3" target="_blank" rel="noopener" class="map-area" style="flex:1;min-width:120px;height:54px;margin-top:0;font-size:11px;gap:5px">
           <i class="ti ti-map-2" style="font-size:18px"></i>
           <span id="cl-map">Офис на карте</span>
         </a>
-        <a href="https://yandex.uz/maps/?text=Ташкентская+область+Назарбек+Тахта+базар" target="_blank" rel="noopener" class="map-area" style="flex:1;min-width:120px;height:54px;margin-top:0;font-size:11px;gap:5px">
+        <a href="https://maps.google.com/maps?q=41.326876,69.142032&ll=41.326876,69.142032&z=16" target="_blank" rel="noopener" class="map-area" style="flex:1;min-width:120px;height:54px;margin-top:0;font-size:11px;gap:5px">
           <i class="ti ti-map-2" style="font-size:18px"></i>
           <span id="cl-map2">Склад на карте</span>
         </a>
@@ -717,7 +718,7 @@ const T = {
     'f1':'Прямые поставки — без посредников','f2':'Сертификаты и документы на всю продукцию',
     'f3':'Гибкие условия оплаты','f4':'Доставка по всему Узбекистану','f5':'Ответ в течение 24 часов',
     'co-tag':'Связаться с нами','co-title':'Контакты <em>и заявка</em>',
-    'cl1':'Офис','cl2':'Склад','cl-phone':'Телефон','cl-work':'Режим работы','cl-hours':'Пн–Сб: 9:00 – 18:00','cl-map':'Офис на карте','cl-map2':'Склад на карте',
+    'cl1':'Офис','cl2':'Склад','cl-phone':'Телефон','cl-work':'Режим работы','cl-hours':'Пн–Сб: 9:00 – 20:00','cl-map':'Офис на карте','cl-map2':'Склад на карте',
     'fh':'Оставить заявку','fl1':'Имя','fl2':'Телефон','fl3':'Продукт','fl4':'Объём','fl5':'Комментарий',
     'sbtn':'Отправить заявку','ok':'✓ Заявка принята — свяжемся в течение 24 часов',
     'fb-desc':'Оптовые поставки пиломатериалов хвойных пород. Прямо с российских заводов — на ваш склад в Узбекистане.',
@@ -745,7 +746,7 @@ const T = {
     'f1':'To\'g\'ridan-to\'g\'ri yetkazib berish — vositachilarsiz','f2':'Barcha mahsulotlar uchun sertifikatlar',
     'f3':'Doimiy mijozlar uchun moslashuvchan to\'lov','f4':'O\'zbekiston bo\'ylab yetkazib berish','f5':'24 soat ichida javob',
     'co-tag':'Biz bilan bog\'laning','co-title':'Aloqa <em>va ariza</em>',
-    'cl1':'Ofis','cl2':'Ombor','cl-phone':'Telefon','cl-work':'Ish vaqti','cl-hours':'Du–Sha: 9:00 – 18:00','cl-map':'Ofis xaritada','cl-map2':'Ombor xaritada',
+    'cl1':'Ofis','cl2':'Ombor','cl-phone':'Telefon','cl-work':'Ish vaqti','cl-hours':'Du–Sha: 9:00 – 20:00','cl-map':'Ofis xaritada','cl-map2':'Ombor xaritada',
     'fh':'Ariza qoldirish','fl1':'Ism','fl2':'Telefon','fl3':'Mahsulot','fl4':'Hajm','fl5':'Izoh',
     'sbtn':'Ariza yuborish','ok':'✓ Ariza qabul qilindi — 24 soat ichida bog\'lanamiz',
     'fb-desc':'Ignabargli yog\'och materiallarini ulgurji yetkazib berish.',
@@ -773,7 +774,7 @@ const T = {
     'f1':'Direct supply — no middlemen','f2':'Full certificates and documents',
     'f3':'Flexible payment for regular clients','f4':'Delivery across Uzbekistan','f5':'24-hour response',
     'co-tag':'Get in touch','co-title':'Contact <em>& order</em>',
-    'cl1':'Office','cl2':'Warehouse','cl-phone':'Phone','cl-work':'Working hours','cl-hours':'Mon–Sat: 9:00 – 18:00','cl-map':'Office on map','cl-map2':'Warehouse on map',
+    'cl1':'Office','cl2':'Warehouse','cl-phone':'Phone','cl-work':'Working hours','cl-hours':'Mon–Sat: 9:00 – 20:00','cl-map':'Office on map','cl-map2':'Warehouse on map',
     'fh':'Request a quote','fl1':'Name','fl2':'Phone','fl3':'Product','fl4':'Volume','fl5':'Comments',
     'sbtn':'Send request','ok':'✓ Request received — we will contact you within 24 hours',
     'fb-desc':'Wholesale softwood lumber. Direct from Russian mills to your warehouse in Uzbekistan.',
