@@ -1,5 +1,12 @@
-
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="APS Wild Card — оптовые поставки пиломатериалов из России в Узбекистан">
+<title>APS Wild Card — Пиломатериалы оптом</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -7,7 +14,8 @@
   --gold:#C9974A;--gold2:#E8C07A;--gold3:#8B6530;
   --txt:#F2EDE6;--txt2:#9A8E82;--txt3:#5C5248;
   --brd:rgba(201,151,74,0.18);--brd2:rgba(201,151,74,0.08);
-  --pad:2.5rem;
+  --pad:clamp(1rem,4vw,2.5rem);
+  --radius:2px;
 }
 body.light{
   --bg:#F9F6F1;--bg2:#F2EDE4;--bg3:#EAE3D8;
@@ -15,149 +23,219 @@ body.light{
   --brd:rgba(139,101,48,0.22);--brd2:rgba(139,101,48,0.1);
 }
 *{transition:background-color .25s,border-color .25s,color .2s}
-@media(max-width:640px){:root{--pad:1.25rem}}
+html{scroll-behavior:smooth}
 body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--txt);line-height:1.6;overflow-x:hidden}
 
-.topbar{background:var(--bg);border-bottom:1px solid var(--brd2);display:flex;align-items:center;justify-content:space-between;padding:0 var(--pad);height:60px;position:relative;z-index:100;gap:12px}
+/* ── TOPBAR ── */
+.topbar{background:var(--bg);border-bottom:1px solid var(--brd2);display:flex;align-items:center;justify-content:space-between;padding:0 var(--pad);height:60px;position:sticky;top:0;z-index:200;gap:12px}
 .logo-wrap{display:flex;align-items:center;gap:10px;cursor:pointer;flex-shrink:0}
-.logo-mark{width:34px;height:34px;border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;color:var(--gold)}
-.logo-name{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400;letter-spacing:0.8px;color:var(--txt)}
+.logo-mark{width:34px;height:34px;border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;color:var(--gold);flex-shrink:0}
+.logo-name{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400;letter-spacing:0.8px;color:var(--txt);white-space:nowrap}
 .logo-name span{color:var(--gold)}
-nav{display:flex;align-items:center;flex:1;justify-content:center}
+nav{display:flex;align-items:center;flex:1;justify-content:center;gap:2px}
 .nav-item{background:none;border:none;color:var(--txt2);font-family:'DM Sans',sans-serif;font-size:13px;font-weight:400;letter-spacing:0.3px;padding:8px 14px;cursor:pointer;transition:color .2s;position:relative;white-space:nowrap}
 .nav-item:hover{color:var(--txt)}
 .nav-item.on{color:var(--gold)}
 .nav-item.on::after{content:'';position:absolute;bottom:-1px;left:14px;right:14px;height:1px;background:var(--gold)}
-.topbar-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.topbar-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
 .lang-switch{display:flex;border:1px solid var(--brd);overflow:hidden}
 .lbtn{background:none;border:none;color:var(--txt3);font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:0.8px;font-weight:500;padding:5px 9px;cursor:pointer;transition:all .15s}
 .lbtn.on{background:var(--gold);color:#0D0B08}
 .lbtn:hover:not(.on){color:var(--txt2)}
-.burger{display:none;background:none;border:1px solid var(--brd);color:var(--txt2);padding:6px 9px;cursor:pointer;font-size:18px}
-.theme-btn{background:none;border:1px solid var(--brd);color:var(--txt2);width:34px;height:34px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;flex-shrink:0;transition:border-color .2s,color .2s}
-.theme-btn:hover{border-color:var(--gold);color:var(--gold)}
-.mob-nav{display:none;flex-direction:column;background:var(--bg2);border-bottom:1px solid var(--brd2);padding:0.5rem 0}
+.burger{display:none;background:none;border:1px solid var(--brd);color:var(--txt2);padding:6px 9px;cursor:pointer;font-size:18px;line-height:1}
+.theme-btn{background:var(--bg3);border:1px solid var(--brd);color:var(--txt);width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:17px;flex-shrink:0;border-radius:var(--radius)}
+.theme-btn:hover{border-color:var(--gold);color:var(--gold);background:rgba(201,151,74,0.08)}
+.mob-nav{display:none;flex-direction:column;background:var(--bg2);border-bottom:1px solid var(--brd2);padding:0.5rem 0;position:sticky;top:60px;z-index:199}
 .mob-nav.open{display:flex}
-.mob-nav-item{background:none;border:none;color:var(--txt2);font-family:'DM Sans',sans-serif;font-size:14px;padding:12px var(--pad);text-align:left;cursor:pointer;transition:color .15s;border-bottom:1px solid var(--brd2)}
+.mob-nav-item{background:none;border:none;color:var(--txt2);font-family:'DM Sans',sans-serif;font-size:14px;padding:13px var(--pad);text-align:left;cursor:pointer;transition:color .15s;border-bottom:1px solid var(--brd2)}
 .mob-nav-item:last-child{border-bottom:none}
 .mob-nav-item.on{color:var(--gold)}
 .mob-nav-item:hover{color:var(--txt)}
 @media(max-width:700px){nav{display:none}.burger{display:block}}
+@media(max-width:380px){.logo-name{display:none}}
 
-.page{display:none;animation:fu .35s ease}
+/* ── PAGE TRANSITIONS ── */
+.page{display:none;animation:fadeUp .35s ease}
 .page.on{display:block}
-@keyframes fu{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 
-.hero{min-height:420px;background:var(--bg2);position:relative;overflow:hidden;display:flex;align-items:center;padding:4rem var(--pad)}
+/* ── HERO ── */
+.hero{min-height:clamp(340px,55vw,520px);background:var(--bg2);position:relative;overflow:hidden;display:flex;align-items:center;padding:4rem var(--pad)}
+.hero-img{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1603796846097-bee99e4a601f?w=1400&q=80') center/cover no-repeat;opacity:0.12}
 .hero-grid{position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(201,151,74,0.04) 40px),repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(201,151,74,0.04) 40px)}
-.hero-glow{position:absolute;right:-60px;top:-60px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(201,151,74,0.06) 0%,transparent 65%)}
-.hero-content{position:relative;max-width:580px}
+.hero-glow{position:absolute;right:-80px;top:-80px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(201,151,74,0.07) 0%,transparent 65%)}
+.hero-content{position:relative;max-width:600px;z-index:1}
 .hero-eye{display:inline-flex;align-items:center;gap:10px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;font-weight:500}
 .hero-eye::before{content:'';width:24px;height:1px;background:var(--gold)}
-.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,5vw,3.6rem);line-height:1.1;font-weight:300;color:var(--txt);margin-bottom:1.25rem;letter-spacing:-0.3px}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5.5vw,3.8rem);line-height:1.08;font-weight:300;color:var(--txt);margin-bottom:1.25rem;letter-spacing:-0.3px}
 .hero h1 em{font-style:italic;color:var(--gold)}
-.hero-sub{font-size:14px;color:var(--txt2);line-height:1.85;margin-bottom:2rem;max-width:440px}
+.hero-sub{font-size:14px;color:var(--txt2);line-height:1.85;margin-bottom:2rem;max-width:460px}
 .hero-btns{display:flex;gap:10px;flex-wrap:wrap}
-.btn-gold{background:var(--gold);color:#0D0B08;border:none;padding:13px 26px;font-size:13px;font-weight:500;letter-spacing:0.3px;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all .2s;white-space:nowrap}
-.btn-gold:hover{background:var(--gold2);transform:translateY(-1px)}
-.btn-ghost{background:transparent;color:var(--txt2);border:1px solid var(--brd);padding:13px 26px;font-size:13px;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all .2s;white-space:nowrap}
-.btn-ghost:hover{color:var(--txt);border-color:rgba(201,151,74,0.4)}
 
-.metrics{display:flex;border-top:1px solid var(--brd2);border-bottom:1px solid var(--brd2)}
-.metric{flex:1;padding:1.25rem var(--pad);border-right:1px solid var(--brd2)}
+/* ── BUTTONS ── */
+.btn-gold{background:var(--gold);color:#0D0B08;border:none;padding:13px 28px;font-size:13px;font-weight:500;letter-spacing:0.3px;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all .2s;white-space:nowrap;border-radius:var(--radius)}
+.btn-gold:hover{background:var(--gold2);transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:var(--txt2);border:1px solid var(--brd);padding:13px 28px;font-size:13px;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all .2s;white-space:nowrap;border-radius:var(--radius)}
+.btn-ghost:hover{color:var(--txt);border-color:rgba(201,151,74,0.5)}
+
+/* ── METRICS ── */
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--brd2);border-bottom:1px solid var(--brd2)}
+.metric{padding:1.4rem var(--pad);border-right:1px solid var(--brd2);position:relative}
 .metric:last-child{border-right:none}
 .metric-n{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:400;color:var(--gold);line-height:1;margin-bottom:5px}
 .metric-l{font-size:11px;color:var(--txt3);letter-spacing:0.8px;text-transform:uppercase}
-@media(max-width:500px){.metrics{flex-wrap:wrap}.metric{flex:1 1 50%;border-bottom:1px solid var(--brd2)}.metric:nth-child(2){border-right:none}.metric:nth-child(3){border-bottom:none}.metric:nth-child(4){border-right:none;border-bottom:none}}
+@media(max-width:560px){.metrics{grid-template-columns:1fr 1fr}.metric:nth-child(2){border-right:none}.metric:nth-child(3),.metric:nth-child(4){border-top:1px solid var(--brd2)}.metric:nth-child(4){border-right:none}}
 
-.promo{background:var(--gold);padding:0.75rem var(--pad);display:flex;align-items:center;flex-wrap:wrap;row-gap:0}
+/* ── PROMO BAR ── */
+.promo{background:var(--gold);padding:0.8rem var(--pad);display:flex;align-items:center;flex-wrap:wrap;gap:0}
 .promo-item{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:500;color:#0D0B08;padding:3px 14px 3px 0;white-space:nowrap}
 .promo-item:not(:last-child)::after{content:'·';margin-left:14px;opacity:0.4}
-@media(max-width:600px){.promo{flex-direction:column;align-items:flex-start;gap:6px;padding:1rem var(--pad)}.promo-item:not(:last-child)::after{display:none}}
+@media(max-width:640px){.promo{flex-direction:column;align-items:flex-start;gap:6px;padding:1rem var(--pad)}.promo-item:not(:last-child)::after{display:none}}
 
+/* ── SECTION ── */
 .sec{padding:3.5rem var(--pad)}
+.sec-sm{padding:2rem var(--pad)}
 .sec-head{margin-bottom:2rem}
 .sec-tag{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:8px}
-.sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,2.4rem);font-weight:300;color:var(--txt)}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,2.5rem);font-weight:300;color:var(--txt)}
 .sec-title em{font-style:italic;color:var(--gold)}
 .sec-rule{width:36px;height:1px;background:var(--gold3);margin-top:12px}
 
-.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1px;background:var(--brd2)}
-.cat-card{background:var(--bg2);padding:1.25rem;cursor:pointer;transition:background .2s;border:1px solid transparent}
-.cat-card:hover{background:var(--bg3);border-color:var(--brd)}
-.wood-box{height:90px;margin-bottom:0.9rem;overflow:hidden;position:relative}
-.grain{width:100%;height:100%;position:relative;overflow:hidden}
-.g1{background:#4A2F0E}.g2{background:#5C3A12}.g3{background:#3D2509}.g4{background:#6B4518}.g5{background:#523015}.g6{background:#452B0F}
+/* ── CATALOG GRID ── */
+.cat-filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:1.5rem}
+.filter-btn{background:none;border:1px solid var(--brd);color:var(--txt3);font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:0.5px;padding:6px 14px;cursor:pointer;transition:all .15s;border-radius:var(--radius)}
+.filter-btn:hover{border-color:var(--gold);color:var(--txt2)}
+.filter-btn.on{background:var(--gold);border-color:var(--gold);color:#0D0B08}
+
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1px;background:var(--brd2)}
+.cat-card{background:var(--bg2);cursor:pointer;transition:background .2s,transform .2s;overflow:hidden;position:relative}
+.cat-card:hover{background:var(--bg3)}
+.cat-card:hover .card-img img{transform:scale(1.04)}
+.cat-card.hidden{display:none}
+
+.card-img{height:180px;overflow:hidden;position:relative;background:var(--bg3)}
+.card-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease;filter:brightness(0.85) saturate(0.9)}
+.card-img-fallback{width:100%;height:100%;position:relative;overflow:hidden}
+.grain{width:100%;height:100%;position:absolute;inset:0}
+.g1{background:linear-gradient(135deg,#4A2F0E 0%,#6B430F 100%)}
+.g2{background:linear-gradient(135deg,#5C3A12 0%,#7A4E18 100%)}
+.g3{background:linear-gradient(135deg,#3D2509 0%,#5A370D 100%)}
+.g4{background:linear-gradient(135deg,#6B4518 0%,#8A5A20 100%)}
+.g5{background:linear-gradient(135deg,#523015 0%,#704218 100%)}
+.g6{background:linear-gradient(135deg,#452B0F 0%,#5F3C13 100%)}
 .grain::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(88deg,transparent,transparent 6px,rgba(0,0,0,0.09) 6px,rgba(0,0,0,0.09) 7px)}
 .grain::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(92deg,transparent,transparent 18px,rgba(255,255,255,0.04) 18px,rgba(255,255,255,0.04) 19px)}
-.wood-lbl{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,0.55);padding:4px 10px;font-family:'Cormorant Garamond',serif;font-size:13px;color:#fff;letter-spacing:0.3px}
-.cat-name{font-size:13px;font-weight:500;color:var(--txt);margin-bottom:3px}
-.cat-sz{font-size:11px;color:var(--txt3);margin-bottom:8px}
-.badges{display:flex;gap:5px;flex-wrap:wrap}
-.badge{font-size:10px;padding:2px 7px;border:1px solid var(--brd);color:var(--txt3);letter-spacing:0.3px}
-.badge.g{border-color:var(--gold3);color:var(--gold)}
+.card-badge-top{position:absolute;top:10px;right:10px;background:rgba(201,151,74,0.9);color:#0D0B08;font-size:10px;font-weight:500;letter-spacing:0.5px;padding:3px 9px;z-index:2}
+.wood-lbl{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,0.7));padding:20px 12px 10px;font-family:'Cormorant Garamond',serif;font-size:14px;color:#fff;letter-spacing:0.3px;z-index:2}
 
+.card-body{padding:1rem 1.1rem 1.2rem}
+.cat-name{font-size:14px;font-weight:500;color:var(--txt);margin-bottom:3px}
+.cat-sz{font-size:11px;color:var(--txt3);margin-bottom:10px;letter-spacing:0.3px}
+.cat-desc{font-size:12px;color:var(--txt2);line-height:1.7;margin-bottom:10px}
+.badges{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:10px}
+.badge{font-size:10px;padding:2px 8px;border:1px solid var(--brd);color:var(--txt3);letter-spacing:0.3px}
+.badge.g{border-color:var(--gold3);color:var(--gold)}
+.card-footer{display:flex;align-items:center;justify-content:space-between;padding-top:10px;border-top:1px solid var(--brd2)}
+.card-price{font-size:11px;color:var(--txt3);letter-spacing:0.3px}
+.card-cta{background:none;border:1px solid var(--brd);color:var(--txt3);font-family:'DM Sans',sans-serif;font-size:11px;padding:5px 12px;cursor:pointer;transition:all .15s}
+.card-cta:hover{border-color:var(--gold);color:var(--gold)}
+
+/* ── CATALOG PAGE EXTRAS ── */
+.cat-search-row{display:flex;gap:10px;margin-bottom:1.25rem;flex-wrap:wrap}
+.cat-search{flex:1;min-width:160px;background:var(--bg2);border:1px solid var(--brd2);color:var(--txt);font-family:'DM Sans',sans-serif;font-size:13px;padding:9px 12px;outline:none;transition:border .15s;border-radius:var(--radius)}
+.cat-search:focus{border-color:var(--gold)}
+.cat-count{font-size:12px;color:var(--txt3);align-self:center;white-space:nowrap}
+
+/* ── ABOUT ── */
 .about-wrap{display:grid;grid-template-columns:1fr 1fr;gap:0}
-@media(max-width:680px){.about-wrap{grid-template-columns:1fr}}
+@media(max-width:720px){.about-wrap{grid-template-columns:1fr}}
 .about-nums{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--brd2);align-content:start}
-.ab-cell{background:var(--bg3);padding:1.5rem;text-align:center}
-.ab-n{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:400;color:var(--gold)}
+.ab-cell{background:var(--bg3);padding:1.6rem;text-align:center}
+.ab-n{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:400;color:var(--gold)}
 .ab-l{font-size:10px;color:var(--txt3);letter-spacing:0.8px;text-transform:uppercase;margin-top:3px}
-.about-body{padding:3rem var(--pad);background:var(--bg2);border-left:1px solid var(--brd2)}
-@media(max-width:680px){.about-body{border-left:none;border-top:1px solid var(--brd2)}}
+.about-body{padding:2.5rem var(--pad);background:var(--bg2);border-left:1px solid var(--brd2)}
+@media(max-width:720px){.about-body{border-left:none;border-top:1px solid var(--brd2)}}
 .about-body p{font-size:13px;color:var(--txt2);line-height:1.9;margin-bottom:0.9rem}
 .feat{list-style:none;margin-top:1.25rem}
 .feat li{display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid var(--brd2);font-size:13px;color:var(--txt2)}
 .feat li i{color:var(--gold);font-size:13px;margin-top:3px;flex-shrink:0}
+.about-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--brd2);margin-top:1px}
+.about-gal-img{height:160px;overflow:hidden;position:relative}
+.about-gal-img img{width:100%;height:100%;object-fit:cover;filter:brightness(0.75) saturate(0.8);transition:filter .3s,transform .3s}
+.about-gal-img:hover img{filter:brightness(0.85) saturate(1);transform:scale(1.03)}
+@media(max-width:500px){.about-gallery{grid-template-columns:1fr 1fr}.about-gal-img:last-child{display:none}}
 
+/* ── CONTACT ── */
 .contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:0}
-@media(max-width:680px){.contact-wrap{grid-template-columns:1fr}}
-.contact-info{padding:3rem var(--pad);background:var(--bg2);border-right:1px solid var(--brd2)}
-@media(max-width:680px){.contact-info{border-right:none;border-bottom:1px solid var(--brd2)}}
-.contact-form{padding:3rem var(--pad);background:var(--bg3)}
+@media(max-width:720px){.contact-wrap{grid-template-columns:1fr}}
+.contact-info{padding:2.5rem var(--pad);background:var(--bg2);border-right:1px solid var(--brd2)}
+@media(max-width:720px){.contact-info{border-right:none;border-bottom:1px solid var(--brd2)}}
+.contact-form{padding:2.5rem var(--pad);background:var(--bg3)}
 .ci{display:flex;gap:12px;margin-bottom:1.25rem;align-items:flex-start}
 .ci-ico{width:36px;height:36px;border:1px solid var(--brd);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:14px;flex-shrink:0}
 .ci-lbl{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--txt3);margin-bottom:2px}
 .ci-val{font-size:13px;color:var(--txt);line-height:1.5}
-.form-h{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;color:var(--txt);margin-bottom:1.25rem}
+.form-h{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;color:var(--txt);margin-bottom:1.25rem}
 .fl{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--txt3);display:block;margin-bottom:6px}
-.ff{width:100%;background:var(--bg2);border:1px solid var(--brd2);color:var(--txt);font-family:'DM Sans',sans-serif;font-size:13px;padding:10px 12px;transition:border .15s;margin-bottom:12px;outline:none}
+.ff{width:100%;background:var(--bg2);border:1px solid var(--brd2);color:var(--txt);font-family:'DM Sans',sans-serif;font-size:13px;padding:10px 12px;transition:border .15s;margin-bottom:12px;outline:none;border-radius:var(--radius)}
 .ff:focus{border-color:var(--gold)}
 .ff option{background:var(--bg2)}
-textarea.ff{height:76px;resize:vertical}
+textarea.ff{height:80px;resize:vertical}
 .fr2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-@media(max-width:400px){.fr2{grid-template-columns:1fr}}
-.btn-send{width:100%;background:var(--gold);color:#0D0B08;border:none;padding:13px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.3px;cursor:pointer;transition:background .2s;margin-top:4px}
+@media(max-width:420px){.fr2{grid-template-columns:1fr}}
+.btn-send{width:100%;background:var(--gold);color:#0D0B08;border:none;padding:13px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.3px;cursor:pointer;transition:background .2s;margin-top:4px;border-radius:var(--radius)}
 .btn-send:hover{background:var(--gold2)}
 .btn-send:disabled{opacity:0.5;cursor:default}
 .ok{display:none;margin-top:10px;padding:10px;border:1px solid rgba(201,151,74,0.25);font-size:12px;color:var(--gold);text-align:center;background:rgba(201,151,74,0.06);letter-spacing:0.3px}
 
+/* ── MAP PLACEHOLDER ── */
+.map-area{height:200px;background:var(--bg3);border:1px solid var(--brd2);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;margin-top:1.5rem;color:var(--txt3);font-size:12px;cursor:pointer;text-decoration:none}
+.map-area:hover{border-color:var(--gold)}
+.map-area i{font-size:28px;color:var(--gold3)}
+
 /* ── FOOTER ── */
 footer{background:var(--bg2);border-top:1px solid var(--brd2)}
-.footer-top{
-  display:grid;grid-template-columns:1.6fr 1fr;
-  gap:2rem;padding:3rem var(--pad) 2rem;
-  border-bottom:1px solid var(--brd2);
-}
-@media(max-width:600px){.footer-top{grid-template-columns:1fr;gap:1.5rem;padding:2rem var(--pad) 1.5rem}}
+.footer-top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:2rem;padding:3rem var(--pad) 2rem;border-bottom:1px solid var(--brd2)}
+@media(max-width:900px){.footer-top{grid-template-columns:1fr 1fr;gap:1.5rem;padding:2rem var(--pad) 1.5rem}}
+@media(max-width:440px){.footer-top{grid-template-columns:1fr}}
 .fb-name{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--txt);display:flex;align-items:center;gap:10px;margin-bottom:10px}
-.fb-mark{width:28px;height:28px;border:1px solid var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:14px;color:var(--gold)}
+.fb-mark{width:28px;height:28px;border:1px solid var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:14px;color:var(--gold);flex-shrink:0}
 .footer-brand-col p{font-size:12px;color:var(--txt3);line-height:1.8;max-width:280px;margin-bottom:14px}
-.footer-social{display:flex;gap:8px;margin-top:4px}
+.footer-social{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
 .soc-btn{display:flex;align-items:center;gap:6px;border:1px solid var(--brd);color:var(--txt3);background:none;font-family:'DM Sans',sans-serif;font-size:11px;padding:6px 12px;cursor:pointer;transition:all .15s;letter-spacing:0.3px;text-decoration:none}
 .soc-btn:hover{border-color:var(--gold);color:var(--gold)}
 .footer-col h4{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold3);margin-bottom:14px;font-weight:500}
 .footer-col ul{list-style:none}
 .footer-col ul li{margin-bottom:8px}
-.footer-col ul li button{background:none;border:none;color:var(--txt3);font-family:'DM Sans',sans-serif;font-size:12px;cursor:pointer;padding:0;transition:color .15s;text-align:left}
-.footer-col ul li button:hover{color:var(--gold)}
+.footer-col ul li button,.footer-col ul li a{background:none;border:none;color:var(--txt3);font-family:'DM Sans',sans-serif;font-size:12px;cursor:pointer;padding:0;transition:color .15s;text-align:left;text-decoration:none;display:block}
+.footer-col ul li button:hover,.footer-col ul li a:hover{color:var(--gold)}
 .footer-bottom{display:flex;justify-content:space-between;align-items:center;padding:1rem var(--pad);flex-wrap:wrap;gap:8px}
 .footer-bottom .copy{font-size:11px;color:var(--txt3);letter-spacing:0.3px}
 .footer-bottom .loc{font-size:11px;color:var(--txt3)}
+
+/* ── MODAL ── */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(13,11,8,0.85);z-index:500;align-items:center;justify-content:center;padding:1rem}
+.modal-overlay.open{display:flex}
+.modal{background:var(--bg2);border:1px solid var(--brd);max-width:520px;width:100%;padding:2rem;position:relative;max-height:90vh;overflow-y:auto}
+.modal-close{position:absolute;top:14px;right:14px;background:none;border:1px solid var(--brd);color:var(--txt2);width:30px;height:30px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px}
+.modal-close:hover{border-color:var(--gold);color:var(--gold)}
+.modal-title{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;margin-bottom:0.5rem;color:var(--txt)}
+.modal-sz{font-size:12px;color:var(--gold);letter-spacing:1px;margin-bottom:1rem}
+.modal-img{width:100%;height:180px;object-fit:cover;margin-bottom:1rem;display:block}
+.modal-img-fallback{width:100%;height:180px;margin-bottom:1rem;position:relative;overflow:hidden}
+.modal-desc{font-size:13px;color:var(--txt2);line-height:1.85;margin-bottom:1rem}
+.modal-specs{border-top:1px solid var(--brd2);padding-top:1rem;margin-bottom:1rem}
+.spec-row{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--brd2);font-size:12px}
+.spec-row:last-child{border-bottom:none}
+.spec-k{color:var(--txt3)}
+.spec-v{color:var(--txt);font-weight:500}
+.modal-btns{display:flex;gap:8px}
+.modal-btns .btn-gold,.modal-btns .btn-ghost{flex:1;text-align:center;padding:11px 16px}
 </style>
+</head>
+<body>
 
-<h2 style="position:absolute;left:-9999px">APS Wild Card — Оптовые пиломатериалы</h2>
-
+<!-- TOPBAR -->
 <div class="topbar">
   <div class="logo-wrap" onclick="go('home')">
     <div class="logo-mark">A</div>
@@ -175,11 +253,10 @@ footer{background:var(--bg2);border-top:1px solid var(--brd2)}
       <button class="lbtn" onclick="setLang('uz')">UZ</button>
       <button class="lbtn" onclick="setLang('en')">EN</button>
     </div>
-    <button class="theme-btn" id="theme-btn" onclick="toggleTheme()" title="Сменить тему" aria-label="Переключить тему"><i class="ti ti-sun" id="theme-ico"></i></button>
+    <button class="theme-btn" id="theme-btn" onclick="toggleTheme()" aria-label="Тема"><i class="ti ti-sun" id="theme-ico"></i></button>
     <button class="burger" onclick="toggleMenu()" aria-label="Меню"><i class="ti ti-menu-2"></i></button>
   </div>
 </div>
-
 <div class="mob-nav" id="mob-nav">
   <button class="mob-nav-item on" id="mn-home" onclick="go('home');toggleMenu()">Главная</button>
   <button class="mob-nav-item" id="mn-catalog" onclick="go('catalog');toggleMenu()">Каталог</button>
@@ -187,10 +264,12 @@ footer{background:var(--bg2);border-top:1px solid var(--brd2)}
   <button class="mob-nav-item" id="mn-contact" onclick="go('contact');toggleMenu()">Контакты</button>
 </div>
 
-<!-- HOME -->
+<!-- ══ HOME ══ -->
 <div class="page on" id="p-home">
   <div class="hero">
-    <div class="hero-grid"></div><div class="hero-glow"></div>
+    <div class="hero-img"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-glow"></div>
     <div class="hero-content">
       <div class="hero-eye" id="h-eye">Оптовые поставки · Ташкент</div>
       <h1 id="h-ttl">Пиломатериалы<br><em>из сердца Сибири</em></h1>
@@ -203,15 +282,15 @@ footer{background:var(--bg2);border-top:1px solid var(--brd2)}
   </div>
   <div class="metrics">
     <div class="metric"><div class="metric-n">2024</div><div class="metric-l" id="m1">Год основания</div></div>
-    <div class="metric"><div class="metric-n">6<span style="font-size:1.4rem">+</span></div><div class="metric-l" id="m2">Видов</div></div>
+    <div class="metric"><div class="metric-n">12<span style="font-size:1.4rem">+</span></div><div class="metric-l" id="m2">Позиций</div></div>
     <div class="metric"><div class="metric-n">100<span style="font-size:1.4rem">%</span></div><div class="metric-l" id="m3">Сертифицировано</div></div>
     <div class="metric"><div class="metric-n">24<span style="font-size:1.4rem">ч</span></div><div class="metric-l" id="m4">Ответ</div></div>
   </div>
   <div class="promo">
-    <div class="promo-item"><i class="ti ti-truck" aria-hidden="true"></i><span id="pr1">Доставка по Узбекистану</span></div>
-    <div class="promo-item"><i class="ti ti-certificate" aria-hidden="true"></i><span id="pr2">Все сертификаты</span></div>
-    <div class="promo-item"><i class="ti ti-building-factory-2" aria-hidden="true"></i><span id="pr3">Прямо от производителя</span></div>
-    <div class="promo-item"><i class="ti ti-clock" aria-hidden="true"></i><span id="pr4">Ответ за 24 часа</span></div>
+    <div class="promo-item"><i class="ti ti-truck"></i><span id="pr1">Доставка по Узбекистану</span></div>
+    <div class="promo-item"><i class="ti ti-certificate"></i><span id="pr2">Все сертификаты</span></div>
+    <div class="promo-item"><i class="ti ti-building-factory-2"></i><span id="pr3">Прямо от производителя</span></div>
+    <div class="promo-item"><i class="ti ti-clock"></i><span id="pr4">Ответ за 24 часа</span></div>
   </div>
   <div class="sec">
     <div class="sec-head">
@@ -220,10 +299,13 @@ footer{background:var(--bg2);border-top:1px solid var(--brd2)}
       <div class="sec-rule"></div>
     </div>
     <div class="cat-grid" id="home-grid"></div>
+    <div style="margin-top:1.5rem;text-align:center">
+      <button class="btn-ghost" onclick="go('catalog')" id="h-view-all">Весь каталог →</button>
+    </div>
   </div>
 </div>
 
-<!-- CATALOG -->
+<!-- ══ CATALOG ══ -->
 <div class="page" id="p-catalog">
   <div class="sec">
     <div class="sec-head">
@@ -231,11 +313,17 @@ footer{background:var(--bg2);border-top:1px solid var(--brd2)}
       <div class="sec-title" id="c-title">Каталог <em>пиломатериалов</em></div>
       <div class="sec-rule"></div>
     </div>
+    <div class="cat-search-row">
+      <input class="cat-search" id="cat-search" placeholder="Поиск по каталогу..." oninput="filterCatalog()">
+      <span class="cat-count" id="cat-count"></span>
+    </div>
+    <div class="cat-filters" id="cat-filters"></div>
     <div class="cat-grid" id="full-grid"></div>
+    <div id="no-results" style="display:none;padding:2rem;text-align:center;color:var(--txt3);font-size:13px">Ничего не найдено</div>
   </div>
 </div>
 
-<!-- ABOUT -->
+<!-- ══ ABOUT ══ -->
 <div class="page" id="p-about">
   <div class="sec" style="padding-bottom:1rem">
     <div class="sec-head">
@@ -253,19 +341,24 @@ footer{background:var(--bg2);border-top:1px solid var(--brd2)}
     </div>
     <div class="about-body">
       <p id="ap1">APS Wild Card специализируется на импорте и оптовой продаже пиломатериалов хвойных пород из России. Работаем напрямую с сертифицированными заводами — без посредников.</p>
-      <p id="ap2">На складе в Ташкенте широкий ассортимент: доски, брусья, рейки. Вся продукция поставляется с полным пакетом документов.</p>
+      <p id="ap2">На складе в Ташкенте широкий ассортимент: доски, брусья, рейки. Вся продукция поставляется с полным пакетом документов. Минимальный заказ от 5 м³, индивидуальные условия для крупного опта.</p>
       <ul class="feat">
-        <li><i class="ti ti-arrow-right" aria-hidden="true"></i><span id="f1">Прямые поставки — без посредников</span></li>
-        <li><i class="ti ti-arrow-right" aria-hidden="true"></i><span id="f2">Сертификаты и документы на всю продукцию</span></li>
-        <li><i class="ti ti-arrow-right" aria-hidden="true"></i><span id="f3">Гибкие условия оплаты</span></li>
-        <li><i class="ti ti-arrow-right" aria-hidden="true"></i><span id="f4">Доставка по всему Узбекистану</span></li>
-        <li><i class="ti ti-arrow-right" aria-hidden="true"></i><span id="f5">Ответ в течение 24 часов</span></li>
+        <li><i class="ti ti-arrow-right"></i><span id="f1">Прямые поставки — без посредников</span></li>
+        <li><i class="ti ti-arrow-right"></i><span id="f2">Сертификаты и документы на всю продукцию</span></li>
+        <li><i class="ti ti-arrow-right"></i><span id="f3">Гибкие условия оплаты для постоянных клиентов</span></li>
+        <li><i class="ti ti-arrow-right"></i><span id="f4">Доставка по всему Узбекистану</span></li>
+        <li><i class="ti ti-arrow-right"></i><span id="f5">Ответ в течение 24 часов</span></li>
       </ul>
     </div>
   </div>
+  <div class="about-gallery">
+    <div class="about-gal-img"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=75" alt="Склад пиломатериалов" loading="lazy"></div>
+    <div class="about-gal-img"><img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=75" alt="Строительные материалы" loading="lazy"></div>
+    <div class="about-gal-img"><img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=75" alt="Лесозаготовка" loading="lazy"></div>
+  </div>
 </div>
 
-<!-- CONTACT -->
+<!-- ══ CONTACT ══ -->
 <div class="page" id="p-contact">
   <div class="sec" style="padding-bottom:1rem">
     <div class="sec-head">
@@ -277,12 +370,44 @@ footer{background:var(--bg2);border-top:1px solid var(--brd2)}
   <div class="contact-wrap">
     <div class="contact-info">
       <div class="ci">
-        <div class="ci-ico"><i class="ti ti-map-pin" aria-hidden="true"></i></div>
-        <div><div class="ci-lbl" id="cl1">Адрес</div><div class="ci-val">г. Ташкент, Мирзо-Улугбекский р-н,<br>Дархон МФЙ, Катта Дархон, проезд 3, 2а</div></div>
+        <div class="ci-ico"><i class="ti ti-building"></i></div>
+        <div><div class="ci-lbl" id="cl1">Офис</div><div class="ci-val">г. Ташкент, Мирзо-Улугбекский р-н,<br>Дархон МФЙ, Катта Дархон, проезд 3, 2а</div></div>
       </div>
       <div class="ci">
-        <div class="ci-ico"><i class="ti ti-brand-instagram" aria-hidden="true"></i></div>
+        <div class="ci-ico"><i class="ti ti-map-pin"></i></div>
+        <div><div class="ci-lbl" id="cl2">Склад</div><div class="ci-val">Ташкентская область, Назарбек,<br>ориентир: Тахта базар</div></div>
+      </div>
+      <div class="ci">
+        <div class="ci-ico"><i class="ti ti-phone"></i></div>
+        <div>
+          <div class="ci-lbl" id="cl-phone">Телефон</div>
+          <div class="ci-val">
+            <a href="tel:+998938260330" style="color:var(--gold);text-decoration:none;display:flex;align-items:center;gap:6px;margin-bottom:4px">
+              <span>+998 93 826 03 30</span><span style="font-size:11px;color:var(--txt3)">— Антон</span>
+            </a>
+            <a href="tel:+998940970003" style="color:var(--gold);text-decoration:none;display:flex;align-items:center;gap:6px">
+              <span>+998 94 097 00 03</span><span style="font-size:11px;color:var(--txt3)">— Суннат</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="ci">
+        <div class="ci-ico"><i class="ti ti-brand-instagram"></i></div>
         <div><div class="ci-lbl">Instagram</div><div class="ci-val"><a href="https://www.instagram.com/apswaildcard" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none">@apswaildcard</a></div></div>
+      </div>
+      <div class="ci">
+        <div class="ci-ico"><i class="ti ti-clock"></i></div>
+        <div><div class="ci-lbl" id="cl-work">Режим работы</div><div class="ci-val" id="cl-hours">Пн–Сб: 9:00 – 18:00</div></div>
+      </div>
+      <div style="display:flex;gap:8px;margin-top:0.5rem;flex-wrap:wrap">
+        <a href="https://yandex.uz/maps/?text=Ташкент+Мирзо-Улугбекский+Дархон+проезд+3" target="_blank" rel="noopener" class="map-area" style="flex:1;min-width:120px;height:54px;margin-top:0;font-size:11px;gap:5px">
+          <i class="ti ti-map-2" style="font-size:18px"></i>
+          <span id="cl-map">Офис на карте</span>
+        </a>
+        <a href="https://yandex.uz/maps/?text=Ташкентская+область+Назарбек+Тахта+базар" target="_blank" rel="noopener" class="map-area" style="flex:1;min-width:120px;height:54px;margin-top:0;font-size:11px;gap:5px">
+          <i class="ti ti-map-2" style="font-size:18px"></i>
+          <span id="cl-map2">Склад на карте</span>
+        </a>
       </div>
     </div>
     <div class="contact-form">
@@ -295,18 +420,24 @@ footer{background:var(--bg2);border-top:1px solid var(--brd2)}
       <select class="ff" id="fi-pr">
         <option value="">—</option>
         <option>Доска 25×150×6000</option>
+        <option>Доска 32×150×6000</option>
+        <option>Доска 40×150×6000</option>
         <option>Доска 50×150×6000</option>
         <option>Брус 100×100×6000</option>
+        <option>Брус 100×150×6000</option>
         <option>Брус 150×150×6000</option>
+        <option>Брус 200×200×6000</option>
         <option>Рейка 38×44</option>
-        <option>Рейка 38×140</option>
+        <option>Рейка 38×140×4000</option>
+        <option>Вагонка сосна</option>
+        <option>Половая доска</option>
       </select>
       <label class="fl" id="fl4">Объём</label>
       <input class="ff" id="fi-v" placeholder="напр. 20 м³">
       <label class="fl" id="fl5">Комментарий</label>
       <textarea class="ff" id="fi-m" placeholder="Дополнительно..."></textarea>
       <button class="btn-send" id="sbtn" onclick="send()">Отправить заявку</button>
-      <div class="ok" id="ok">✓ Заявка принята — свяжемся в течение 24 часов</div>
+      <div class="ok" id="ok"></div>
       <p style="font-size:11px;color:var(--txt3);margin-top:10px;line-height:1.7">Также пишите нам в Instagram: <a href="https://www.instagram.com/apswaildcard" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none">@apswaildcard</a></p>
     </div>
   </div>
@@ -322,8 +453,8 @@ footer{background:var(--bg2);border-top:1px solid var(--brd2)}
       </div>
       <p id="fb-desc">Оптовые поставки пиломатериалов хвойных пород. Прямо с российских заводов — на ваш склад в Узбекистане.</p>
       <div class="footer-social">
-        <a href="https://www.instagram.com/apswaildcard" target="_blank" rel="noopener" class="soc-btn"><i class="ti ti-brand-instagram" aria-hidden="true"></i> @apswaildcard</a>
-        <span class="soc-btn"><i class="ti ti-map-pin" aria-hidden="true"></i> <span id="f-city">Ташкент</span></span>
+        <a href="https://www.instagram.com/apswaildcard" target="_blank" rel="noopener" class="soc-btn"><i class="ti ti-brand-instagram"></i> @apswaildcard</a>
+        <span class="soc-btn"><i class="ti ti-map-pin"></i> <span id="f-city">Ташкент</span></span>
       </div>
     </div>
     <div class="footer-col">
@@ -335,6 +466,24 @@ footer{background:var(--bg2);border-top:1px solid var(--brd2)}
         <li><button onclick="go('contact')" id="fc-contact">Контакты</button></li>
       </ul>
     </div>
+    <div class="footer-col">
+      <h4 id="fc2-h">Продукция</h4>
+      <ul>
+        <li><button onclick="go('catalog')">Доска обрезная</button></li>
+        <li><button onclick="go('catalog')">Брус строительный</button></li>
+        <li><button onclick="go('catalog')">Рейка</button></li>
+        <li><button onclick="go('catalog')">Вагонка</button></li>
+        <li><button onclick="go('catalog')">Половая доска</button></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 id="fc3-h">Контакты</h4>
+      <ul>
+        <li><a href="tel:+998938260330" style="color:var(--txt3);text-decoration:none;font-size:12px;display:block;margin-bottom:2px;transition:color .15s" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--txt3)'">+998 93 826 03 30 — Антон</a></li>
+        <li><a href="tel:+998940970003" style="color:var(--txt3);text-decoration:none;font-size:12px;display:block;transition:color .15s" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--txt3)'">+998 94 097 00 03 — Суннат</a></li>
+        <li style="margin-top:8px"><a href="https://www.instagram.com/apswaildcard" target="_blank" rel="noopener" style="color:var(--txt3);text-decoration:none;font-size:12px;display:block;transition:color .15s" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--txt3)'">@apswaildcard</a></li>
+      </ul>
+    </div>
   </div>
   <div class="footer-bottom">
     <div class="copy" id="f-copy">© 2024–2026 APS Wild Card MCHJ</div>
@@ -342,76 +491,474 @@ footer{background:var(--bg2);border-top:1px solid var(--brd2)}
   </div>
 </footer>
 
+<!-- MODAL -->
+<div class="modal-overlay" id="modal" onclick="closeModal(event)">
+  <div class="modal" id="modal-box">
+    <button class="modal-close" onclick="closeModalDirect()"><i class="ti ti-x"></i></button>
+    <div id="modal-img-wrap"></div>
+    <div class="modal-title" id="modal-name"></div>
+    <div class="modal-sz" id="modal-sz"></div>
+    <div class="modal-desc" id="modal-desc"></div>
+    <div class="modal-specs" id="modal-specs"></div>
+    <div class="modal-btns">
+      <button class="btn-gold" onclick="orderFromModal()" id="modal-order">Оставить заявку</button>
+      <button class="btn-ghost" onclick="closeModalDirect()">Закрыть</button>
+    </div>
+  </div>
+</div>
+
 <script>
-const prods=[
-  {name:{ru:'Доска обрезная',uz:'Kesilgan taxta',en:'Sawn board'},size:'25×150×6000',cls:'g1',tags:{ru:['Сосна','1–4 сорт'],uz:['Qarag\'ay','1–4 sort'],en:['Pine','Grade 1–4']}},
-  {name:{ru:'Доска обрезная',uz:'Kesilgan taxta',en:'Sawn board'},size:'50×150×6000',cls:'g2',tags:{ru:['Сосна','1–4 сорт'],uz:['Qarag\'ay','1–4 sort'],en:['Pine','Grade 1–4']}},
-  {name:{ru:'Брус',uz:'Brus',en:'Timber beam'},size:'100×100×6000',cls:'g3',tags:{ru:['Сосна','2 сорт'],uz:['Qarag\'ay','2 sort'],en:['Pine','Grade 2']}},
-  {name:{ru:'Брус',uz:'Brus',en:'Timber beam'},size:'150×150×6000',cls:'g4',tags:{ru:['Сосна','2 сорт'],uz:['Qarag\'ay','2 sort'],en:['Pine','Grade 2']}},
-  {name:{ru:'Рейка',uz:'Reyka',en:'Batten'},size:'38×44',cls:'g5',tags:{ru:['Сосна','Ель'],uz:['Qarag\'ay','Archa'],en:['Pine','Spruce']}},
-  {name:{ru:'Рейка строганая',uz:'Tekis reyka',en:'Planed batten'},size:'38×140×4000',cls:'g6',tags:{ru:['Ель','1 сорт'],uz:['Archa','1 sort'],en:['Spruce','Grade 1']}},
+// ── DATA ──────────────────────────────────────────────────
+const prods = [
+  {
+    id:1,
+    name:{ru:'Доска обрезная',uz:'Kesilgan taxta',en:'Sawn board'},
+    size:'25×150×6000',
+    cat:'board',
+    cls:'g1',
+    img:'https://images.unsplash.com/photo-1615811361523-6bd03d7748e7?w=600&q=75',
+    tags:{ru:['Сосна','1–4 сорт'],uz:["Qarag'ay",'1–4 sort'],en:['Pine','Grade 1–4']},
+    desc:{ru:'Обрезная доска из сибирской сосны. Ровный пил, минимальный обзол. Применяется в каркасном строительстве, опалубке, кровле.',
+          uz:"Sibirdan qarag'ay taxta. Toza kesilgan, minimal cheti. Qurilish, tom yopish uchun ishlatiladi.",
+          en:'Sawn pine board from Siberia. Clean cut, minimal wane. Used in framing, formwork, roofing.'},
+    specs:{ru:{Порода:'Сосна',Сушка:'Атмосферная',Сорт:'1–4',Упаковка:'Пакет 6 м'},
+           uz:{Tur:"Qarag'ay",Quritish:'Atmosfera',Sort:'1–4',Qadoq:'Paket 6 m'},
+           en:{Species:'Pine',Drying:'Air-dried',Grade:'1–4',Pack:'Bundle 6 m'}}
+  },
+  {
+    id:2,
+    name:{ru:'Доска обрезная',uz:'Kesilgan taxta',en:'Sawn board'},
+    size:'32×150×6000',
+    cat:'board',
+    cls:'g2',
+    img:'https://images.unsplash.com/photo-1603796846097-bee99e4a601f?w=600&q=75',
+    tags:{ru:['Сосна','1–3 сорт'],uz:["Qarag'ay",'1–3 sort'],en:['Pine','Grade 1–3']},
+    desc:{ru:'Универсальная доска 32 мм для полов, перегородок и кровельных конструкций. Высокая прочность при умеренной стоимости.',
+          uz:'32 mm taxta pol, devor va tom uchun. Yuqori mustahkamlik.',
+          en:'32mm versatile board for floors, partitions and roof structures. High strength at moderate cost.'},
+    specs:{ru:{Порода:'Сосна',Сушка:'Атмосферная',Сорт:'1–3',Упаковка:'Пакет 6 м'},
+           uz:{Tur:"Qarag'ay",Quritish:'Atmosfera',Sort:'1–3',Qadoq:'Paket 6 m'},
+           en:{Species:'Pine',Drying:'Air-dried',Grade:'1–3',Pack:'Bundle 6 m'}}
+  },
+  {
+    id:3,
+    name:{ru:'Доска обрезная',uz:'Kesilgan taxta',en:'Sawn board'},
+    size:'40×150×6000',
+    cat:'board',
+    cls:'g1',
+    img:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=75',
+    tags:{ru:['Сосна','2 сорт'],uz:["Qarag'ay",'2 sort'],en:['Pine','Grade 2']},
+    desc:{ru:'Доска 40 мм повышенной толщины. Идеально для половой доски, чернового пола и несущих конструкций.',
+          uz:'40 mm qalinlikdagi taxta. Pol va tashuvchi konstruktsiyalar uchun ideal.',
+          en:'40mm thick board. Ideal for flooring, subfloor and load-bearing structures.'},
+    specs:{ru:{Порода:'Сосна',Сушка:'Атмосферная',Сорт:'2',Упаковка:'Пакет 6 м'},
+           uz:{Tur:"Qarag'ay",Quritish:'Atmosfera',Sort:'2',Qadoq:'Paket 6 m'},
+           en:{Species:'Pine',Drying:'Air-dried',Grade:'2',Pack:'Bundle 6 m'}}
+  },
+  {
+    id:4,
+    name:{ru:'Доска обрезная',uz:'Kesilgan taxta',en:'Sawn board'},
+    size:'50×150×6000',
+    cat:'board',
+    cls:'g2',
+    img:'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=75',
+    tags:{ru:['Сосна','1–4 сорт'],uz:["Qarag'ay",'1–4 sort'],en:['Pine','Grade 1–4']},
+    desc:{ru:'Толстая обрезная доска 50 мм. Используется в несущих конструкциях, перекрытиях и тяжёлой опалубке.',
+          uz:'50 mm qalin taxta. Tashuvchi konstruktsiyalar va qolip uchun.',
+          en:'50mm heavy sawn board. Used in load-bearing structures, floors and heavy formwork.'},
+    specs:{ru:{Порода:'Сосна',Сушка:'Атмосферная',Сорт:'1–4',Упаковка:'Пакет 6 м'},
+           uz:{Tur:"Qarag'ay",Quritish:'Atmosfera',Sort:'1–4',Qadoq:'Paket 6 m'},
+           en:{Species:'Pine',Drying:'Air-dried',Grade:'1–4',Pack:'Bundle 6 m'}}
+  },
+  {
+    id:5,
+    name:{ru:'Брус строительный',uz:'Qurilish brusi',en:'Timber beam'},
+    size:'100×100×6000',
+    cat:'beam',
+    cls:'g3',
+    img:'https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=600&q=75',
+    tags:{ru:['Сосна','2 сорт'],uz:["Qarag'ay",'2 sort'],en:['Pine','Grade 2']},
+    desc:{ru:'Строительный брус 100×100 — стандарт каркасного строительства. Применяется для стропил, лаг, стоек и балок перекрытия.',
+          uz:'100×100 qurilish brusi — kadrli qurilishning standarti. Tashuvchi konstruktsiyalar uchun.',
+          en:'100×100 structural timber — the standard for framing. Used for rafters, joists, studs and beams.'},
+    specs:{ru:{Порода:'Сосна',Сушка:'Атмосферная',Сорт:'2',Профиль:'Квадратный'},
+           uz:{Tur:"Qarag'ay",Quritish:'Atmosfera',Sort:'2',Profil:'Kvadrat'},
+           en:{Species:'Pine',Drying:'Air-dried',Grade:'2',Profile:'Square'}}
+  },
+  {
+    id:6,
+    name:{ru:'Брус строительный',uz:'Qurilish brusi',en:'Timber beam'},
+    size:'100×150×6000',
+    cat:'beam',
+    cls:'g4',
+    img:'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&q=75',
+    tags:{ru:['Сосна','2 сорт'],uz:["Qarag'ay",'2 sort'],en:['Pine','Grade 2']},
+    desc:{ru:'Прямоугольный брус 100×150. Применяется в качестве мауэрлата, балок перекрытий и несущих элементов кровли.',
+          uz:'100×150 to\'rtburchak brus. Tom va qoplama elementlari uchun.',
+          en:'100×150 rectangular beam. Used as wall plate, floor beams and roof load-bearing elements.'},
+    specs:{ru:{Порода:'Сосна',Сушка:'Атмосферная',Сорт:'2',Профиль:'Прямоугольный'},
+           uz:{Tur:"Qarag'ay",Quritish:'Atmosfera',Sort:'2',Profil:'To\'rtburchak'},
+           en:{Species:'Pine',Drying:'Air-dried',Grade:'2',Profile:'Rectangular'}}
+  },
+  {
+    id:7,
+    name:{ru:'Брус строительный',uz:'Qurilish brusi',en:'Timber beam'},
+    size:'150×150×6000',
+    cat:'beam',
+    cls:'g3',
+    img:'https://images.unsplash.com/photo-1519710164239-da123dc03ef4?w=600&q=75',
+    tags:{ru:['Сосна','2 сорт'],uz:["Qarag'ay",'2 sort'],en:['Pine','Grade 2']},
+    desc:{ru:'Мощный брус 150×150 для капитального строительства. Используется в рубленых домах, тяжёлых перекрытиях и столбах.',
+          uz:'150×150 quvvatli brus. Kapital qurilish va og\'ir inshootlar uchun.',
+          en:'Heavy 150×150 beam for capital construction. Used in log houses, heavy floors and posts.'},
+    specs:{ru:{Порода:'Сосна',Сушка:'Атмосферная',Сорт:'2',Профиль:'Квадратный'},
+           uz:{Tur:"Qarag'ay",Quritish:'Atmosfera',Sort:'2',Profil:'Kvadrat'},
+           en:{Species:'Pine',Drying:'Air-dried',Grade:'2',Profile:'Square'}}
+  },
+  {
+    id:8,
+    name:{ru:'Брус строительный',uz:'Qurilish brusi',en:'Timber beam'},
+    size:'200×200×6000',
+    cat:'beam',
+    cls:'g4',
+    img:'https://images.unsplash.com/photo-1509391366360-2e959784a276?w=600&q=75',
+    tags:{ru:['Сосна','2 сорт'],uz:["Qarag'ay",'2 sort'],en:['Pine','Grade 2']},
+    desc:{ru:'Крупногабаритный брус 200×200 для промышленного и тяжёлого гражданского строительства. Большой запас прочности.',
+          uz:'200×200 yirik o\'lchamli brus. Sanoat va og\'ir qurilish uchun.',
+          en:'200×200 large-scale beam for industrial and heavy civil construction. High load capacity.'},
+    specs:{ru:{Порода:'Сосна',Сушка:'Атмосферная',Сорт:'2',Профиль:'Квадратный'},
+           uz:{Tur:"Qarag'ay",Quritish:'Atmosfera',Sort:'2',Profil:'Kvadrat'},
+           en:{Species:'Pine',Drying:'Air-dried',Grade:'2',Profile:'Square'}}
+  },
+  {
+    id:9,
+    name:{ru:'Рейка',uz:'Reyka',en:'Batten'},
+    size:'38×44',
+    cat:'batten',
+    cls:'g5',
+    img:'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=600&q=75',
+    tags:{ru:['Сосна','Ель'],uz:["Qarag'ay",'Archa'],en:['Pine','Spruce']},
+    desc:{ru:'Рейка стандартного сечения для обрешётки кровли, монтажа утеплителя и отделочных работ. Сосна и ель по наличию.',
+          uz:'Tom yopish va issiqlik izolyatsiyasi uchun standart reyka. Qarag\'ay va archa.',
+          en:'Standard section batten for roofing battens, insulation fixing and finishing. Pine and spruce available.'},
+    specs:{ru:{Порода:'Сосна / Ель',Сушка:'Атмосферная',Сорт:'2–3',Применение:'Обрешётка'},
+           uz:{Tur:"Qarag'ay / Archa",Quritish:'Atmosfera',Sort:'2–3',Ishlatish:'Tom panjari'},
+           en:{Species:'Pine / Spruce',Drying:'Air-dried',Grade:'2–3',Use:'Roofing'}}
+  },
+  {
+    id:10,
+    name:{ru:'Рейка строганая',uz:'Tekis reyka',en:'Planed batten'},
+    size:'38×140×4000',
+    cat:'batten',
+    cls:'g6',
+    img:'https://images.unsplash.com/photo-1601662528567-526cd06f6582?w=600&q=75',
+    tags:{ru:['Ель','1 сорт'],uz:['Archa','1 sort'],en:['Spruce','Grade 1']},
+    desc:{ru:'Строганая рейка из ели первого сорта. Гладкая поверхность, точные размеры. Для чистовой отделки и мебельного производства.',
+          uz:'Birinchi sort archa reykasi. Silliq sirt, aniq o\'lchamlar. Mebel va bezak ishlari uchun.',
+          en:'Grade 1 planed spruce batten. Smooth surface, precise dimensions. For finishing and furniture manufacturing.'},
+    specs:{ru:{Порода:'Ель',Обработка:'Строганая',Сорт:'1',Влажность:'18–20%'},
+           uz:{Tur:'Archa',Qayta:'Tekislangan',Sort:'1',Namlik:'18–20%'},
+           en:{Species:'Spruce',Finish:'Planed',Grade:'1',Moisture:'18–20%'}}
+  },
+  {
+    id:11,
+    name:{ru:'Вагонка сосна',uz:'Vagonka qarag\'ay',en:'Pine cladding'},
+    size:'12×96×3000',
+    cat:'finishing',
+    cls:'g5',
+    img:'https://images.unsplash.com/photo-1541123437800-1bb1317badc2?w=600&q=75',
+    tags:{ru:['Сосна','Сорт А'],uz:["Qarag'ay",'A sort'],en:['Pine','Grade A']},
+    desc:{ru:'Деревянная вагонка из сосны для внутренней отделки стен и потолков. Сорт А — чистовая лицевая поверхность.',
+          uz:'Ichki bezak uchun qarag\'ay vagonka. A sort — sifatli yuza.',
+          en:'Pine tongue-and-groove cladding for interior walls and ceilings. Grade A clean face surface.'},
+    specs:{ru:{Порода:'Сосна',Обработка:'Строганая',Сорт:'А',Профиль:'Вагонка'},
+           uz:{Tur:"Qarag'ay",Qayta:'Tekislangan',Sort:'A',Profil:'Vagonka'},
+           en:{Species:'Pine',Finish:'Planed',Grade:'A',Profile:'T&G'}}
+  },
+  {
+    id:12,
+    name:{ru:'Половая доска',uz:'Pol taxtasi',en:'Flooring board'},
+    size:'28×120×3000',
+    cat:'finishing',
+    cls:'g6',
+    img:'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=75',
+    tags:{ru:['Сосна','Строганая'],uz:["Qarag'ay",'Tekislangan'],en:['Pine','Planed']},
+    desc:{ru:'Шпунтованная половая доска из сосны. Система шип-паз обеспечивает плотное соединение. Для жилых и коммерческих помещений.',
+          uz:'Qarag\'ay pol taxtasi. Pazli tizim mahkam ulanishni ta\'minlaydi.',
+          en:'Tongue-and-groove pine flooring board. T&G system ensures tight joints. For residential and commercial use.'},
+    specs:{ru:{Порода:'Сосна',Обработка:'Строганая',Профиль:'Шпунт',Влажность:'≤18%'},
+           uz:{Tur:"Qarag'ay",Qayta:'Tekislangan',Profil:'Paz',Namlik:'≤18%'},
+           en:{Species:'Pine',Finish:'Planed',Profile:'T&G',Moisture:'≤18%'}}
+  },
 ];
 
-const T={
-  ru:{'h-eye':'Оптовые поставки · Ташкент','h-ttl':'Пиломатериалы<br><em>из сердца Сибири</em>','h-sub':'Сертифицированная сосна и ель напрямую от российских производителей. Доски, брусья, рейки — любые объёмы с гарантией качества.','h-b1':'Смотреть каталог','h-b2':'Оставить заявку','m1':'Год основания','m2':'Видов','m3':'Сертифицировано','m4':'Ответ','pr1':'Доставка по Узбекистану','pr2':'Все сертификаты','pr3':'Прямо от производителя','pr4':'Ответ за 24 часа','s1t':'Ассортимент','s1h':'Популярные <em>позиции</em>','c-tag':'Вся продукция','c-title':'Каталог <em>пиломатериалов</em>','a-tag':'О компании','a-title':'APS Wild Card <em>MCHJ</em>','a1':'Год основания','a2':'Ташкент','a3':'Поставщик','a4':'Опт','ap1':'APS Wild Card специализируется на импорте и оптовой продаже пиломатериалов хвойных пород из России. Работаем напрямую с сертифицированными заводами — без посредников.','ap2':'На складе в Ташкенте широкий ассортимент: доски, брусья, рейки. Вся продукция поставляется с полным пакетом документов.','f1':'Прямые поставки — без посредников','f2':'Сертификаты и документы на всю продукцию','f3':'Гибкие условия оплаты','f4':'Доставка по всему Узбекистану','f5':'Ответ в течение 24 часов','co-tag':'Связаться с нами','co-title':'Контакты <em>и заявка</em>','cl1':'Адрес','fh':'Оставить заявку','fl1':'Имя','fl2':'Телефон','fl3':'Продукт','fl4':'Объём','fl5':'Комментарий','sbtn':'Отправить заявку','ok':'✓ Заявка принята — свяжемся в течение 24 часов','fb-desc':'Оптовые поставки пиломатериалов хвойных пород. Прямо с российских заводов — на ваш склад в Узбекистане.','fc1-h':'Навигация','fc-home':'Главная','fc-cat':'Каталог','fc-about':'О нас','fc-contact':'Контакты','f-city':'Ташкент','f-copy':'© 2024–2026 APS Wild Card MCHJ','f-lic':'Все права защищены','n-home':'Главная','n-catalog':'Каталог','n-about':'О нас','n-contact':'Контакты','mn-home':'Главная','mn-catalog':'Каталог','mn-about':'О нас','mn-contact':'Контакты'},
-  uz:{'h-eye':'Ulgurji yetkazib berish · Toshkent','h-ttl':'Yog\'och materiallar<br><em>Sibirdan keladi</em>','h-sub':'Rossiyadan sertifikatlangan qarag\'ay va archa. Taxtalar, bruslar, reykalar — har qanday hajmda, sifat kafolati bilan.','h-b1':'Katalogni ko\'rish','h-b2':'Ariza qoldirish','m1':'Asos yili','m2':'Turlar','m3':'Sertifikatlangan','m4':'Javob','pr1':'O\'zbekiston bo\'ylab yetkazib berish','pr2':'Barcha sertifikatlar','pr3':'Ishlab chiqaruvchidan to\'g\'ri','pr4':'24 soat ichida javob','s1t':'Assortiment','s1h':'Mashhur <em>pozitsiyalar</em>','c-tag':'Barcha mahsulotlar','c-title':'Yog\'och materiallar <em>katalogi</em>','a-tag':'Kompaniya haqida','a-title':'APS Wild Card <em>MCHJ</em>','a1':'Asos yili','a2':'Toshkent','a3':'Yetkazuvchi','a4':'Ulgurji','ap1':'APS Wild Card Rossiyadan ignabargli yog\'och materiallarini import qilish va ulgurji sotishga ixtisoslashgan.','ap2':'Toshkentdagi omborda keng assortiment: taxtalar, bruslar, reykalar. Barcha mahsulotlar hujjatlar bilan keladi.','f1':'To\'g\'ridan-to\'g\'ri yetkazib berish — vositachilarsiz','f2':'Barcha mahsulotlar uchun sertifikatlar','f3':'Doimiy mijozlar uchun moslashuvchan to\'lov','f4':'O\'zbekiston bo\'ylab yetkazib berish','f5':'24 soat ichida javob','co-tag':'Biz bilan bog\'laning','co-title':'Aloqa <em>va ariza</em>','cl1':'Manzil','fh':'Ariza qoldirish','fl1':'Ism','fl2':'Telefon','fl3':'Mahsulot','fl4':'Hajm','fl5':'Izoh','sbtn':'Ariza yuborish','ok':'✓ Ariza qabul qilindi — 24 soat ichida bog\'lanamiz','fb-desc':'Ignabargli yog\'och materiallarini ulgurji yetkazib berish. Rossiya zavodlaridan — sizning omboringizga.','fc1-h':'Navigatsiya','fc-home':'Bosh sahifa','fc-cat':'Katalog','fc-about':'Biz haqimizda','fc-contact':'Aloqa','f-city':'Toshkent','f-copy':'© 2024–2026 APS Wild Card MCHJ','f-lic':'Barcha huquqlar himoyalangan','n-home':'Bosh sahifa','n-catalog':'Katalog','n-about':'Biz haqimizda','n-contact':'Aloqa','mn-home':'Bosh sahifa','mn-catalog':'Katalog','mn-about':'Biz haqimizda','mn-contact':'Aloqa'},
-  en:{'h-eye':'Wholesale Supplier · Tashkent','h-ttl':'Premium Timber<br><em>from Siberian forests</em>','h-sub':'Certified pine and spruce direct from Russian manufacturers. Boards, beams, battens — any volume, quality guaranteed.','h-b1':'View catalog','h-b2':'Request a quote','m1':'Founded','m2':'Products','m3':'Certified','m4':'Response','pr1':'Delivery across Uzbekistan','pr2':'All certificates','pr3':'Direct from factory','pr4':'24-hour reply','s1t':'Range','s1h':'Popular <em>items</em>','c-tag':'All products','c-title':'Lumber <em>catalog</em>','a-tag':'About us','a-title':'APS Wild Card <em>LLC</em>','a1':'Founded','a2':'Tashkent','a3':'Supplier','a4':'Wholesale','ap1':'APS Wild Card specializes in importing and wholesale distribution of softwood lumber from Russia, working directly with certified manufacturers.','ap2':'Our Tashkent warehouse holds a wide selection of boards, beams, and battens. All products come with full documentation.','f1':'Direct supply — no middlemen','f2':'Full certificates and documents','f3':'Flexible payment for regular clients','f4':'Delivery across Uzbekistan','f5':'24-hour response','co-tag':'Get in touch','co-title':'Contact <em>& order</em>','cl1':'Address','fh':'Request a quote','fl1':'Name','fl2':'Phone','fl3':'Product','fl4':'Volume','fl5':'Comments','sbtn':'Send request','ok':'✓ Request received — we will contact you within 24 hours','fb-desc':'Wholesale softwood lumber. Direct from Russian mills to your warehouse in Uzbekistan.','fc1-h':'Navigation','fc-home':'Home','fc-cat':'Catalog','fc-about':'About','fc-contact':'Contact','f-city':'Tashkent','f-copy':'© 2024–2026 APS Wild Card LLC','f-lic':'All rights reserved','n-home':'Home','n-catalog':'Catalog','n-about':'About','n-contact':'Contact','mn-home':'Home','mn-catalog':'Catalog','mn-about':'About','mn-contact':'Contact'},
+const cats = {
+  all:{ru:'Все',uz:'Barchasi',en:'All'},
+  board:{ru:'Доска',uz:'Taxta',en:'Board'},
+  beam:{ru:'Брус',uz:'Brus',en:'Beam'},
+  batten:{ru:'Рейка',uz:'Reyka',en:'Batten'},
+  finishing:{ru:'Отделка',uz:'Bezak',en:'Finishing'},
 };
 
-let lang='ru';
+const T = {
+  ru:{
+    'h-eye':'Оптовые поставки · Ташкент',
+    'h-ttl':'Пиломатериалы<br><em>из сердца Сибири</em>',
+    'h-sub':'Сертифицированная сосна и ель напрямую от российских производителей. Доски, брусья, рейки — любые объёмы с гарантией качества.',
+    'h-b1':'Смотреть каталог','h-b2':'Оставить заявку','h-view-all':'Весь каталог →',
+    'm1':'Год основания','m2':'Позиций','m3':'Сертифицировано','m4':'Ответ',
+    'pr1':'Доставка по Узбекистану','pr2':'Все сертификаты','pr3':'Прямо от производителя','pr4':'Ответ за 24 часа',
+    's1t':'Ассортимент','s1h':'Популярные <em>позиции</em>',
+    'c-tag':'Вся продукция','c-title':'Каталог <em>пиломатериалов</em>',
+    'a-tag':'О компании','a-title':'APS Wild Card <em>MCHJ</em>',
+    'a1':'Год основания','a2':'Ташкент','a3':'Поставщик','a4':'Опт',
+    'ap1':'APS Wild Card специализируется на импорте и оптовой продаже пиломатериалов хвойных пород из России. Работаем напрямую с сертифицированными заводами — без посредников.',
+    'ap2':'На складе в Ташкенте широкий ассортимент: доски, брусья, рейки. Вся продукция поставляется с полным пакетом документов. Минимальный заказ от 5 м³.',
+    'f1':'Прямые поставки — без посредников','f2':'Сертификаты и документы на всю продукцию',
+    'f3':'Гибкие условия оплаты','f4':'Доставка по всему Узбекистану','f5':'Ответ в течение 24 часов',
+    'co-tag':'Связаться с нами','co-title':'Контакты <em>и заявка</em>',
+    'cl1':'Офис','cl2':'Склад','cl-phone':'Телефон','cl-work':'Режим работы','cl-hours':'Пн–Сб: 9:00 – 18:00','cl-map':'Офис на карте','cl-map2':'Склад на карте',
+    'fh':'Оставить заявку','fl1':'Имя','fl2':'Телефон','fl3':'Продукт','fl4':'Объём','fl5':'Комментарий',
+    'sbtn':'Отправить заявку','ok':'✓ Заявка принята — свяжемся в течение 24 часов',
+    'fb-desc':'Оптовые поставки пиломатериалов хвойных пород. Прямо с российских заводов — на ваш склад в Узбекистане.',
+    'fc1-h':'Навигация','fc2-h':'Продукция','fc-home':'Главная','fc-cat':'Каталог','fc-about':'О нас','fc-contact':'Контакты',
+    'f-city':'Ташкент','f-copy':'© 2024–2026 APS Wild Card MCHJ','f-lic':'Все права защищены',
+    'n-home':'Главная','n-catalog':'Каталог','n-about':'О нас','n-contact':'Контакты',
+    'mn-home':'Главная','mn-catalog':'Каталог','mn-about':'О нас','mn-contact':'Контакты',
+    'modal-order':'Оставить заявку',
+    'no-results':'Ничего не найдено',
+    'cat-search-ph':'Поиск по каталогу...',
+  },
+  uz:{
+    'h-eye':'Ulgurji yetkazib berish · Toshkent',
+    'h-ttl':'Yog\'och materiallar<br><em>Sibirdan keladi</em>',
+    'h-sub':'Rossiyadan sertifikatlangan qarag\'ay va archa. Taxtalar, bruslar, reykalar — har qanday hajmda, sifat kafolati bilan.',
+    'h-b1':'Katalogni ko\'rish','h-b2':'Ariza qoldirish','h-view-all':'Barcha katalog →',
+    'm1':'Asos yili','m2':'Pozitsiya','m3':'Sertifikatlangan','m4':'Javob',
+    'pr1':'O\'zbekiston bo\'ylab yetkazib berish','pr2':'Barcha sertifikatlar','pr3':'Ishlab chiqaruvchidan to\'g\'ri','pr4':'24 soat ichida javob',
+    's1t':'Assortiment','s1h':'Mashhur <em>pozitsiyalar</em>',
+    'c-tag':'Barcha mahsulotlar','c-title':'Yog\'och materiallar <em>katalogi</em>',
+    'a-tag':'Kompaniya haqida','a-title':'APS Wild Card <em>MCHJ</em>',
+    'a1':'Asos yili','a2':'Toshkent','a3':'Yetkazuvchi','a4':'Ulgurji',
+    'ap1':'APS Wild Card Rossiyadan ignabargli yog\'och materiallarini import qilish va ulgurji sotishga ixtisoslashgan.',
+    'ap2':'Toshkentdagi omborda keng assortiment: taxtalar, bruslar, reykalar. Barcha mahsulotlar hujjatlar bilan keladi.',
+    'f1':'To\'g\'ridan-to\'g\'ri yetkazib berish — vositachilarsiz','f2':'Barcha mahsulotlar uchun sertifikatlar',
+    'f3':'Doimiy mijozlar uchun moslashuvchan to\'lov','f4':'O\'zbekiston bo\'ylab yetkazib berish','f5':'24 soat ichida javob',
+    'co-tag':'Biz bilan bog\'laning','co-title':'Aloqa <em>va ariza</em>',
+    'cl1':'Ofis','cl2':'Ombor','cl-phone':'Telefon','cl-work':'Ish vaqti','cl-hours':'Du–Sha: 9:00 – 18:00','cl-map':'Ofis xaritada','cl-map2':'Ombor xaritada',
+    'fh':'Ariza qoldirish','fl1':'Ism','fl2':'Telefon','fl3':'Mahsulot','fl4':'Hajm','fl5':'Izoh',
+    'sbtn':'Ariza yuborish','ok':'✓ Ariza qabul qilindi — 24 soat ichida bog\'lanamiz',
+    'fb-desc':'Ignabargli yog\'och materiallarini ulgurji yetkazib berish.',
+    'fc1-h':'Navigatsiya','fc2-h':'Mahsulotlar','fc-home':'Bosh sahifa','fc-cat':'Katalog','fc-about':'Biz haqimizda','fc-contact':'Aloqa',
+    'f-city':'Toshkent','f-copy':'© 2024–2026 APS Wild Card MCHJ','f-lic':'Barcha huquqlar himoyalangan',
+    'n-home':'Bosh sahifa','n-catalog':'Katalog','n-about':'Biz haqimizda','n-contact':'Aloqa',
+    'mn-home':'Bosh sahifa','mn-catalog':'Katalog','mn-about':'Biz haqimizda','mn-contact':'Aloqa',
+    'modal-order':'Ariza qoldirish',
+    'no-results':'Hech narsa topilmadi',
+    'cat-search-ph':'Katalogda qidirish...',
+  },
+  en:{
+    'h-eye':'Wholesale Supplier · Tashkent',
+    'h-ttl':'Premium Timber<br><em>from Siberian forests</em>',
+    'h-sub':'Certified pine and spruce direct from Russian manufacturers. Boards, beams, battens — any volume, quality guaranteed.',
+    'h-b1':'View catalog','h-b2':'Request a quote','h-view-all':'Full catalog →',
+    'm1':'Founded','m2':'Products','m3':'Certified','m4':'Response',
+    'pr1':'Delivery across Uzbekistan','pr2':'All certificates','pr3':'Direct from factory','pr4':'24-hour reply',
+    's1t':'Range','s1h':'Popular <em>items</em>',
+    'c-tag':'All products','c-title':'Lumber <em>catalog</em>',
+    'a-tag':'About us','a-title':'APS Wild Card <em>LLC</em>',
+    'a1':'Founded','a2':'Tashkent','a3':'Supplier','a4':'Wholesale',
+    'ap1':'APS Wild Card specializes in importing and wholesale distribution of softwood lumber from Russia, working directly with certified manufacturers.',
+    'ap2':'Our Tashkent warehouse holds a wide selection of boards, beams, and battens. All products come with full documentation. Min order from 5 m³.',
+    'f1':'Direct supply — no middlemen','f2':'Full certificates and documents',
+    'f3':'Flexible payment for regular clients','f4':'Delivery across Uzbekistan','f5':'24-hour response',
+    'co-tag':'Get in touch','co-title':'Contact <em>& order</em>',
+    'cl1':'Office','cl2':'Warehouse','cl-phone':'Phone','cl-work':'Working hours','cl-hours':'Mon–Sat: 9:00 – 18:00','cl-map':'Office on map','cl-map2':'Warehouse on map',
+    'fh':'Request a quote','fl1':'Name','fl2':'Phone','fl3':'Product','fl4':'Volume','fl5':'Comments',
+    'sbtn':'Send request','ok':'✓ Request received — we will contact you within 24 hours',
+    'fb-desc':'Wholesale softwood lumber. Direct from Russian mills to your warehouse in Uzbekistan.',
+    'fc1-h':'Navigation','fc2-h':'Products','fc-home':'Home','fc-cat':'Catalog','fc-about':'About','fc-contact':'Contact',
+    'f-city':'Tashkent','f-copy':'© 2024–2026 APS Wild Card LLC','f-lic':'All rights reserved',
+    'n-home':'Home','n-catalog':'Catalog','n-about':'About','n-contact':'Contact',
+    'mn-home':'Home','mn-catalog':'Catalog','mn-about':'About','mn-contact':'Contact',
+    'modal-order':'Request a quote',
+    'no-results':'No results found',
+    'cat-search-ph':'Search catalog...',
+  }
+};
 
-function card(p){
-  const t=p.tags[lang]||p.tags.ru;
-  const n=p.name[lang]||p.name.ru;
-  return `<div class="cat-card"><div class="wood-box"><div class="grain ${p.cls}"><div class="wood-lbl">${p.size} мм</div></div></div><div class="cat-name">${n}</div><div class="cat-sz">${p.size} мм</div><div class="badges">${t.map((x,i)=>`<span class="badge${i===0?' g':''}">${x}</span>`).join('')}</div></div>`;
+let lang = 'ru';
+let activeCat = 'all';
+let currentProd = null;
+
+// ── RENDER CARD ──────────────────────────────────────────
+function card(p, small=false){
+  const t = p.tags[lang] || p.tags.ru;
+  const n = p.name[lang] || p.name.ru;
+  const d = p.desc[lang] || p.desc.ru;
+  const imgHtml = p.img
+    ? `<div class="card-img"><span class="card-badge-top">${t[0]}</span><img src="${p.img}" alt="${n} ${p.size}" loading="lazy" onerror="this.parentElement.style.display='none';this.parentElement.nextElementSibling&&(this.parentElement.nextElementSibling.style.display='block')"><div class="wood-lbl">${p.size} мм</div></div>`
+    : `<div class="card-img"><div class="card-img-fallback"><div class="grain ${p.cls}"></div></div><span class="card-badge-top">${t[0]}</span><div class="wood-lbl">${p.size} мм</div></div>`;
+  const shortDesc = d.length > 80 ? d.substring(0,80)+'...' : d;
+  return `<div class="cat-card" data-id="${p.id}" data-cat="${p.cat}" onclick="openModal(${p.id})">
+    ${imgHtml}
+    <div class="card-body">
+      <div class="cat-name">${n}</div>
+      <div class="cat-sz">${p.size} мм</div>
+      ${!small ? `<div class="cat-desc">${shortDesc}</div>` : ''}
+      <div class="badges">${t.map((x,i)=>`<span class="badge${i===0?' g':''}">${x}</span>`).join('')}</div>
+      <div class="card-footer">
+        <span class="card-price">${lang==='en'?'Price on request':lang==='uz'?'Narx so\'rovda':'Цена по запросу'}</span>
+        <button class="card-cta">${lang==='en'?'Details':lang==='uz'?'Batafsil':'Подробнее'}</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+// ── FILTER BUTTONS ──────────────────────────────────────
+function buildFilters(){
+  const wrap = document.getElementById('cat-filters');
+  if(!wrap) return;
+  wrap.innerHTML = Object.entries(cats).map(([k,v])=>`
+    <button class="filter-btn${k===activeCat?' on':''}" onclick="setFilter('${k}')">${v[lang]||v.ru}</button>
+  `).join('');
+}
+
+function setFilter(cat){
+  activeCat = cat;
+  filterCatalog();
+  buildFilters();
+}
+
+function filterCatalog(){
+  const q = (document.getElementById('cat-search')||{}).value||'';
+  const search = q.toLowerCase();
+  const cards = document.querySelectorAll('#full-grid .cat-card');
+  let visible = 0;
+  cards.forEach(c=>{
+    const id = parseInt(c.dataset.id);
+    const p = prods.find(x=>x.id===id);
+    const catMatch = activeCat==='all' || c.dataset.cat===activeCat;
+    const name = (p.name[lang]||p.name.ru).toLowerCase();
+    const size = p.size.toLowerCase();
+    const searchMatch = !search || name.includes(search)||size.includes(search);
+    const show = catMatch && searchMatch;
+    c.classList.toggle('hidden',!show);
+    if(show) visible++;
+  });
+  const nr = document.getElementById('no-results');
+  const cc = document.getElementById('cat-count');
+  if(nr) nr.style.display = visible===0?'block':'none';
+  if(cc) cc.textContent = `${visible} ${lang==='en'?'items':lang==='uz'?'ta':' позиций'}`;
 }
 
 function render(){
-  const hg=document.getElementById('home-grid');
-  const fg=document.getElementById('full-grid');
-  if(hg)hg.innerHTML=prods.slice(0,4).map(card).join('');
-  if(fg)fg.innerHTML=prods.map(card).join('');
+  const hg = document.getElementById('home-grid');
+  const fg = document.getElementById('full-grid');
+  if(hg) hg.innerHTML = prods.slice(0,4).map(p=>card(p,true)).join('');
+  if(fg) fg.innerHTML = prods.map(p=>card(p,false)).join('');
+  buildFilters();
+  filterCatalog();
 }
 
+// ── MODAL ──────────────────────────────────────────────
+function openModal(id){
+  const p = prods.find(x=>x.id===id);
+  if(!p) return;
+  currentProd = p;
+  const n = p.name[lang]||p.name.ru;
+  const d = p.desc[lang]||p.desc.ru;
+  const specs = p.specs[lang]||p.specs.ru;
+  document.getElementById('modal-name').textContent = n;
+  document.getElementById('modal-sz').textContent = p.size + ' мм';
+  document.getElementById('modal-desc').textContent = d;
+  document.getElementById('modal-order').textContent = T[lang]['modal-order'];
+  const imgWrap = document.getElementById('modal-img-wrap');
+  imgWrap.innerHTML = p.img
+    ? `<img class="modal-img" src="${p.img}" alt="${n}" onerror="this.style.display='none'">`
+    : `<div class="modal-img-fallback"><div class="grain ${p.cls}" style="position:absolute;inset:0"></div></div>`;
+  const specRows = Object.entries(specs).map(([k,v])=>`<div class="spec-row"><span class="spec-k">${k}</span><span class="spec-v">${v}</span></div>`).join('');
+  document.getElementById('modal-specs').innerHTML = specRows;
+  document.getElementById('modal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function closeModal(e){
+  if(e.target===document.getElementById('modal')) closeModalDirect();
+}
+function closeModalDirect(){
+  document.getElementById('modal').classList.remove('open');
+  document.body.style.overflow='';
+}
+function orderFromModal(){
+  closeModalDirect();
+  const p = currentProd;
+  if(!p) return;
+  go('contact');
+  setTimeout(()=>{
+    const sel = document.getElementById('fi-pr');
+    const n = p.name.ru;
+    const sz = p.size;
+    for(let o of sel.options){
+      if(o.text.includes(sz.split('×')[0]) && o.text.includes(sz.split('×')[1]||'')){
+        sel.value = o.value; break;
+      }
+    }
+  },200);
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape') closeModalDirect()});
+
+// ── LANG ──────────────────────────────────────────────
 function setLang(l){
-  lang=l;
+  lang = l;
   document.querySelectorAll('.lbtn').forEach((b,i)=>b.classList.toggle('on',['ru','uz','en'][i]===l));
-  const d=T[l];
-  const htmlIds=['h-ttl','s1h','c-title','a-title','co-title'];
+  const d = T[l];
+  const htmlIds = ['h-ttl','s1h','c-title','a-title','co-title'];
   Object.entries(d).forEach(([id,v])=>{
-    const el=document.getElementById(id);
-    if(!el)return;
-    if(htmlIds.includes(id))el.innerHTML=v;
-    else el.textContent=v;
+    const el = document.getElementById(id);
+    if(!el) return;
+    if(htmlIds.includes(id)) el.innerHTML = v;
+    else if(id==='cat-search-ph'){
+      const inp = document.getElementById('cat-search');
+      if(inp) inp.placeholder = v;
+    } else el.textContent = v;
   });
   render();
 }
 
+// ── NAV ──────────────────────────────────────────────
 function go(name){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));
   document.getElementById('p-'+name).classList.add('on');
   ['home','catalog','about','contact'].forEach(k=>{
-    const dn=document.getElementById('n-'+k);
-    const mn=document.getElementById('mn-'+k);
-    if(dn)dn.classList.toggle('on',k===name);
-    if(mn)mn.classList.toggle('on',k===name);
+    const dn = document.getElementById('n-'+k);
+    const mn = document.getElementById('mn-'+k);
+    if(dn) dn.classList.toggle('on',k===name);
+    if(mn) mn.classList.toggle('on',k===name);
   });
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 
 function toggleMenu(){document.getElementById('mob-nav').classList.toggle('open')}
 
 function toggleTheme(){
-  const isLight=document.body.classList.toggle('light');
-  document.getElementById('theme-ico').className=isLight?'ti ti-moon':'ti ti-sun';
+  const isLight = document.body.classList.toggle('light');
+  document.getElementById('theme-ico').className = isLight?'ti ti-moon':'ti ti-sun';
 }
 
 function send(){
-  const n=document.getElementById('fi-n').value.trim();
-  const p=document.getElementById('fi-p').value.trim();
-  if(!n||!p)return;
-  document.getElementById('sbtn').disabled=true;
-  document.getElementById('ok').style.display='block';
+  const n = document.getElementById('fi-n').value.trim();
+  const p = document.getElementById('fi-p').value.trim();
+  if(!n||!p) return;
+  const btn = document.getElementById('sbtn');
+  btn.disabled = true;
+  const ok = document.getElementById('ok');
+  ok.textContent = T[lang]['ok'];
+  ok.style.display = 'block';
 }
 
+// ── INIT ──────────────────────────────────────────────
 render();
 </script>
+</body>
+</html>
